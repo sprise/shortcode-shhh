@@ -38,6 +38,10 @@ class SPR_Shhh {
 		$this->config['pref'] = 'shortcode_shhh_';
 		$this->config['opts'] = array('codes', 'closes', 'trailing', 'args');
 				
+				
+		// Installation call
+		register_activation_hook( __FILE__, array( $this, 'install' ) );
+
 		// Create settings page
 		add_action( 'admin_menu', array($this, 'admin_pane') );
 		
@@ -177,10 +181,6 @@ class SPR_Shhh {
 	}
 }
   
-if(!is_object($spr_shhh)) $spr_shhh = new SPR_Shhh();  
+if(!isset($spr_shh) || !is_object($spr_shhh)) $spr_shhh = new SPR_Shhh();  
 
 } // class exists check
-
-
-// Installation call
-register_activation_hook( __FILE__, array( 'SPR_Shhh', 'install' ) );
